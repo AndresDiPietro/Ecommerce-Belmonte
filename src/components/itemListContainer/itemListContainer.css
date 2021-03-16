@@ -1,0 +1,8 @@
+.itemListContainer{
+    background-color: aqua;
+}
+.itemListContainer__title{
+    color: rgb(93, 43, 43);
+    text-align: center;
+    /* text-transform: uppercase; */
+}

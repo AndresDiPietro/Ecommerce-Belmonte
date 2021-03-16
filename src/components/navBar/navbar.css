@@ -4,8 +4,10 @@
 .header__container{
     display: flex;
     flex-wrap: wrap;
+    /* background-color: beige; */
 }
-.title{
+.header__title{
+    /* color: rgb(204, 70, 70); */
     color: whitesmoke;
     font-size: 1.6em;
     margin: 0 auto;
@@ -16,7 +18,7 @@ nav{
 }
 .navbar{
     margin-top: 0;
-    background-color: gray;
+    /* background-color: gray; */
     list-style: none;
     padding-left: 0;
     width: 85%;
@@ -28,7 +30,7 @@ nav{
     /* background-color: lightcoral; */
 }
 .navbar__item--user{
-    background-color: khaki;
+    /* background-color: khaki; */
     padding: 1.5em .2em;
 }
 .navbar__icon{
@@ -47,8 +49,9 @@ nav{
     nav{
         width: 70%;
     }
-    .title{
+    .header__title{
         font-size: 2em;
+        /* background-color: rgb(144, 170, 161); */
     }
     .navbar{
         transform: translateX(0);

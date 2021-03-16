@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import ItemListContainer from "./navItems.js";
+import NavItem from "./navItems.js";
 import IconBars from "./iconBars/iconBars";
+import CartWidget from "./cartWidget";
 
 import "./navbar.css";
 
@@ -11,14 +12,15 @@ const NavBar = () => {
     return(
         <div className="header__container">
             <IconBars enabled={enabled} setEnabled={setEnabled} classIcon={classIcon}/>
-            <span className="title">Ecommerce</span>
-        <nav>
-            <ul className={classNav}>
-                <ItemListContainer classItem="navbar__item" link="#" classLink="navbar__link" classIcon="fas fa-wrench navbar__icon" content="Categoría"/>
-                <ItemListContainer classItem="navbar__item" link="#" classLink="navbar__link" classIcon="fas fa-tools navbar__icon" content="Categoría"/>
-                <ItemListContainer classItem="navbar__item" link="#" classLink="navbar__link" classIcon="fas fa-hammer navbar__icon" content="Categoría"/>
-            </ul>
-        </nav>
+            <span className="header__title">Ecommerce</span>
+            <nav>
+                <ul className={classNav}>
+                    <CartWidget classItem="navbar__item" link="#" classLink="navbar__link" content="CartWidget"/>
+                    <NavItem classItem="navbar__item" link="#" classLink="navbar__link" classIcon="fas fa-wrench navbar__icon" content="Categoría"/>
+                    <NavItem classItem="navbar__item" link="#" classLink="navbar__link" classIcon="fas fa-tools navbar__icon" content="Categoría"/>
+                    <NavItem classItem="navbar__item" link="#" classLink="navbar__link" classIcon="fas fa-hammer navbar__icon" content="Categoría"/>
+                </ul>
+            </nav>
         </div>
     )
 };
