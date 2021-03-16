@@ -40,6 +40,7 @@ nav{
     text-decoration: none;
     /* background-color: rgb(160, 236, 29); */
     display: block;
+    color: whitesmoke;
 }
 .navbar--active{
     transform: translateX(0);
