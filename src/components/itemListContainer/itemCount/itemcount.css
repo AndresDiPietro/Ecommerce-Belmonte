@@ -1,0 +1,27 @@
+.itemcount{
+    background-color: rosybrown;
+    width: 12em;
+    display: flex;
+    /* flex-direction: ; */
+    flex-wrap: wrap;
+}
+.itemcount__buttons{
+    display: flex;
+    background-color: royalblue;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.itemcount__minus,
+.itemcount__plus{
+    cursor: pointer;
+    /* outline-style: solid 1px red; */
+    border: none;
+    width: 2.5em;
+    height: 2.5em;
+}
+.itemcount__count{
+
+}
+.itemcount__addcart{
+    width: 100%;
+}
