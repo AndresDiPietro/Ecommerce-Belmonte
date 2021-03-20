@@ -9,7 +9,7 @@ function App() {
         <NavBar/>
       </header>
       <main>
-        <ItemListContainer/>
+        <ItemListContainer greeting="mensaje enviado por la prop greeting"/>
       </main>
     </div>
   )
