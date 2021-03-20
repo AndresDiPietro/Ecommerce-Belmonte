@@ -7,7 +7,7 @@ const ItemListContainer = ({greeting}) => {
             <h2 className="itemListContainer__title">{greeting}</h2>
             <ItemCount 
             init="1" 
-            stock="7" 
+            stock="10" 
             onAdd={(num)=>{
                 num > 1? console.log(`agregaste ${num} productos`) :console.log(`agregaste ${num} producto`)
                 
