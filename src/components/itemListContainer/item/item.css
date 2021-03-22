@@ -1,0 +1,22 @@
+.item-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.item{
+    background-color: salmon;
+    width: 12em;
+    margin: .5em;
+}
+.item__title{
+
+}
+.item__img{
+    max-width: 100% ;
+}
+.item__description{
+
+}
+.item__price{
+
+}

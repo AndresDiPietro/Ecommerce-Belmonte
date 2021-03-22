@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Item from "../item";
+import "../item/item.css";
 
 const ItemList = ({items}) => {
-    return <div>{items.map((item=><Item key={item.id} item={item}/>))}</div>
+    return <section className="item-list">{items.map((item=><Item key={item.id} item={item}/>))}</section>
 }
 export default ItemList;

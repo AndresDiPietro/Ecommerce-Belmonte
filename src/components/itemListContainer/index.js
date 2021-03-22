@@ -4,17 +4,7 @@ import ItemList from "./itemList";
 import "./itemListContainer.css";
 
 const ItemListContainer = ({greeting}) => {
-    const [items, setItems]=useState([])
-    
-    //========== Prueba par llamar datos desde products.json (también probé con la extensión .txt ============)
-
-    // useEffect(()=>{
-    //         fetch('products.json')
-    //             .then(res => res.json())
-    //             .then(obj => console.log(obj))
-    //             .catch(console.log())
-         
-    // },[])
+    const [items, setItems]=useState([]);
 
     useEffect(()=>{
         const promise = new Promise((resolve, reject) => {
