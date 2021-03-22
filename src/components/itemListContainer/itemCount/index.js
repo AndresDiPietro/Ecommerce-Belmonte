@@ -3,10 +3,10 @@ import "./itemcount.css";
 
 const ItemCount = ({init, stock, onAdd}) => {
     
-    const [count, setCount] = useState(parseInt(init));
+    const [count, setCount] = useState(init);
 
     useEffect(() =>{
-        setCount(parseInt(init));
+        setCount(init);
         return;
     }, [init]);
 
