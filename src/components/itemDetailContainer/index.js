@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from "react";
-import productos from "./products.json";
+// import productos from "./products.json";
 
 const ItemDetailContainer = () => {
     
-    const [product, setProduct] = useState([])
+    const [products, setProducts] = useState([])
     useEffect(()=>{
         fetch("./products.json")
         .then(res => res.json())
-        .then(res => setProduct(res))
+        .then(res => setProducts(res.text()))
     },[])
-
+    
     return(
         <div>
-            <ul>{productos.map(prod => <li key={prod.id} className="produ">{prod.title}</li>)}</ul>
+            <ul>{products.map(prod => <li key={prod.id} className="product">{prod.title}</li>)}</ul>
         </div>
     )
 }
