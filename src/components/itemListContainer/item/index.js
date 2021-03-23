@@ -4,10 +4,10 @@ import React from "react";
 const Item = ({item}) => {
     return(
     <article className="item">
-        <h2 className="item__title">{item.title}</h2>
         <img className="item__img" src={item.pictureUrl}/>
-        <p className="item__description">{item.shortDescription}</p>
         <span className="item__price">$ {item.price}</span>
+        <span className="item__sale">12% OFF</span>
+        <h3 className="item__title">{item.title}</h3>
     </article>
     )
 }
