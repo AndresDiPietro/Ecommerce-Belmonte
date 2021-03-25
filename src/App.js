@@ -1,19 +1,35 @@
 import NavBar from './components/navBar/navBar.js';
 import ItemListContainer from "./components/itemListContainer"
-import "./App.css"
 import ItemDetailContainer from './components/itemDetailContainer/index.js';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="header">
-        <NavBar/>
-      </header>
-      <main>
-        <ItemListContainer greeting="mensaje enviado por la prop greeting"/>
-        <ItemDetailContainer/>
-      </main>
-    </div>
+
+    <BrowserRouter>
+      <div className="App">
+        <header className="header">
+          <NavBar/>
+        </header>
+        <main>
+          <Switch>
+            <Route path="/category/:categoryId">
+              <ItemListContainer greeting="mensaje enviado por la prop greeting"/>
+            </Route>
+            <Route path="/item/:itemId">
+              <ItemDetailContainer/>
+            </Route>
+            <Route path="*">
+              404
+            </Route>
+
+          </Switch>
+        </main>
+      </div>
+    </BrowserRouter>
+    
   )
 };
 

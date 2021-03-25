@@ -1,20 +1,32 @@
 import React, {useState, useEffect} from "react";
-// import productos from "./products.json";
+import {useParams} from "react-router-dom";
+import Products from "../products.json";
+import ItemDetail from "./itemDetail";
 
 const ItemDetailContainer = () => {
-    
-    const [products, setProducts] = useState([])
+    const [item, setItem] = useState(null);
+    const {itemId} = useParams();
+    // useEffect(()=>{
+    //     setTimeout(() => {
+    //         fetch('./listProducts.json')
+    //         .then(res => res.json())
+    //         .then(res => {
+    //             setItem(res.filter(obj=> obj.id === itemId))
+    //         })
+    //     },2000)
+    // },[itemId]);
     useEffect(()=>{
-        fetch("./products.json")
-            .then(res => res.json())
-            .then(res => setProducts(res))
-    },[])
-    
+        const promise = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(Products.filter(product=> product.id == itemId))
+            },2000)
+        })
+        promise.then((res)=>setItem(res[0]))
+        return;
+    },[itemId]);
+
     return(
-        <div>
-            <ul>{products.map(prod => <li key={prod.id} className="product">{prod.title}, {prod.price}</li>)}</ul>
-        </div>
+        <ItemDetail item={item}/>
     )
 }
-
 export default ItemDetailContainer;

@@ -12,6 +12,10 @@
     font-size: 1.6em;
     margin: 0 auto;
 }
+.header__title-link{
+    text-decoration: none;
+    color: inherit;
+}
 nav{
     /* background-color: rgb(174, 133, 212); */
     width: 100%;

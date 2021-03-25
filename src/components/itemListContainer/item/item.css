@@ -3,6 +3,10 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.item-link{
+    text-decoration: none;
+    color: inherit;
+}
 .item{
     background-color: white;
     width: 12em;
