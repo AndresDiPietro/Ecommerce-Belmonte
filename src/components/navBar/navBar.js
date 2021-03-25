@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavItem from "./navItems.js";
-import IconBars from "./iconBars/iconBars";
-import CartWidget from "./cartWidget";
+import IconBars from "../iconBars/iconBars";
+import CartWidget from "../cartWidget";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 

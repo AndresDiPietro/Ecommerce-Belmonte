@@ -1,6 +1,6 @@
 import React from "react";
 import Item from "../item";
-import "../item/item.css";
+// import "../../item/item.css";
 
 const ItemList = ({items}) => {
     // console.log(items)

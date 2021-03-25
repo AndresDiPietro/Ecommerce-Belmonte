@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import Products from "../products.json";
-import ItemDetail from "./itemDetail";
+import ItemDetail from "../itemDetail";
 
 const ItemDetailContainer = () => {
+
     const [item, setItem] = useState(null);
     const {itemId} = useParams();
+    
+    //======Llamada fetch a archivo Json, que nuevamente dejó de funcionar y me gustaría saber cómo hacerla funcionar.
+
     // useEffect(()=>{
     //     setTimeout(() => {
     //         fetch('./listProducts.json')
@@ -15,6 +19,9 @@ const ItemDetailContainer = () => {
     //         })
     //     },2000)
     // },[itemId]);
+
+    //=============================================================================================================
+
     useEffect(()=>{
         const promise = new Promise((resolve) => {
             setTimeout(() => {
