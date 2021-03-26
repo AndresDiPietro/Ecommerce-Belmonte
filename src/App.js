@@ -15,8 +15,11 @@ function App() {
         </header>
         <main>
           <Switch>
+            <Route exact path="/">
+              <ItemListContainer/>
+            </Route>
             <Route path="/category/:categoryId">
-              <ItemListContainer greeting="mensaje enviado por la prop greeting"/>
+              <ItemListContainer />
             </Route>
             <Route path="/item/:itemId">
               <ItemDetailContainer/>
@@ -24,7 +27,6 @@ function App() {
             <Route path="*">
               404
             </Route>
-
           </Switch>
         </main>
       </div>
