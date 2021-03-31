@@ -10,7 +10,7 @@ const NavBar = () => {
     const [active, setActive] = useState(true);
     
     const classIcon = active ? "navbar__icon-bars" : "navbar__icon-bars navbar__icon-bars--active";
-    const classNav = active ? "navbar" : "navbar navbar--active";
+    const classNav = active ? "nav" : "nav nav--active";
     
     const [keyword, setKeyword] = useState("");
     const handleSubmit = evt => {   
@@ -24,7 +24,7 @@ const NavBar = () => {
 
     })
     return(
-        <div className="header__container">
+        <div className="header-container">
             <IconBars active={active} setActive={setActive} classIcon={classIcon}/>
             <span className="header__title"><Link to="/" className="header__title-link">Ecommerce</Link></span>
             
@@ -33,8 +33,8 @@ const NavBar = () => {
             </form>
             
             <span className="header__cart"><a href="#" className=""><i className="fab fa-opencart navbar__icon icon-cart"></i></a></span>
-            <nav>
-                <ul className={classNav}>
+            <nav className={classNav}>
+                <ul className="navbar">
                     <NavItem classItem="navbar__item" link="/category/otoño-invierno" classLink="navbar__link" classIcon="fas fa-wrench navbar__icon" content="Otoño/Invierno"/>
                     <NavItem classItem="navbar__item" link="/category/primavera-verano" classLink="navbar__link" classIcon="fas fa-tools navbar__icon" content="Primavera/Verano"/>
                     <CartWidget classItem="navbar__item cart-Widget" link="#" classLink="navbar__link" content=""/>

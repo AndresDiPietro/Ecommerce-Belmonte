@@ -1,13 +1,13 @@
 /*====== Icon bars ======*/
 .navbar__icon-container{
-    /* background-color: rgb(0, 0, 0); */
-    display: block;
-    width: 30px;
+    /* display: block; */
+    width: 25px;
     height: 30px;
     display: flex;
     align-items: center;
     cursor: pointer;
     margin: .5em 0 .5em 1em;
+    /* background-color: rgb(255, 255, 255); */
 }
 .navbar__icon-bars{
     position: relative;
@@ -22,7 +22,7 @@
     position: absolute;
     width: inherit;
     height: inherit;
-    border-radius: 2px;
+    border-radius: inherit;
     background-color: rgba(0, 0, 0, 0.52);
     top: -8px;
     transition: transform .3s;
