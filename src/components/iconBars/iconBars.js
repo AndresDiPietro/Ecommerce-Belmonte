@@ -1,10 +1,10 @@
 import React from "react";
 import "./iconbars.css";
 
-const IconBars = ({classIcon, enabled, setEnabled}) => {
+const IconBars = ({classIcon, active, setActive}) => {
 
     return(
-        <div className="navbar__icon-container" onClick={()=> setEnabled(!enabled)}>
+        <div className="navbar__icon-container" onClick={()=> setActive(!active)}>
             <span className={classIcon}/>
         </div>
     )

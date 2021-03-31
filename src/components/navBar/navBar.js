@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavItem from "./navItems.js";
 import IconBars from "../iconBars/iconBars";
 import CartWidget from "../cartWidget";
@@ -6,11 +6,13 @@ import "./navbar.css";
 import { Link} from "react-router-dom";
 
 const NavBar = () => {
-    const [enabled, setEnabled] = useState(true);
-    const classIcon = enabled ? "navbar__icon-bars" : "navbar__icon-bars navbar__icon-bars--active";
-    const classNav = enabled ? "navbar" : "navbar navbar--active";
-    const [keyword, setKeyword] = useState("");
 
+    const [active, setActive] = useState(true);
+    
+    const classIcon = active ? "navbar__icon-bars" : "navbar__icon-bars navbar__icon-bars--active";
+    const classNav = active ? "navbar" : "navbar navbar--active";
+    
+    const [keyword, setKeyword] = useState("");
     const handleSubmit = evt => {   
         evt.preventDefault()
         console.log(keyword)
@@ -18,9 +20,12 @@ const NavBar = () => {
     const handleChange = evt => {
         setKeyword(evt.target.value)
     }
+    useEffect(()=>{
+
+    })
     return(
         <div className="header__container">
-            <IconBars enabled={enabled} setEnabled={setEnabled} classIcon={classIcon}/>
+            <IconBars active={active} setActive={setActive} classIcon={classIcon}/>
             <span className="header__title"><Link to="/" className="header__title-link">Ecommerce</Link></span>
             
             <form className="header__search" onSubmit={handleSubmit}>
