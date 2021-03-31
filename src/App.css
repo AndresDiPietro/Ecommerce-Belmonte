@@ -1,9 +1,17 @@
+*{
+  box-sizing: border-box;
+}
 body{
-  background-color: rgb(14, 5, 5);
+  background-color: #EBEBEB;
 }
 .header{
-  /* background-color: cadetblue; */
-  /* padding-bottom: 2em; */
+  background-color: #596aff;
+}
+.main{
+  position: relative;
+}
+.footer{
+  color: whitesmoke;
 }
 .product{
   color: aliceblue;

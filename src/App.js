@@ -9,11 +9,11 @@ function App() {
   return (
 
     <BrowserRouter>
-      <div className="App">
+      <>
         <header className="header">
           <NavBar/>
         </header>
-        <main>
+        <main className="main">
           <Switch>
             <Route exact path="/">
               <ItemListContainer/>
@@ -29,7 +29,10 @@ function App() {
             </Route>
           </Switch>
         </main>
-      </div>
+        <footer className="footer">
+          FOOTER
+        </footer>
+      </>
     </BrowserRouter>
     
   )

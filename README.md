@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Ecommerce (nombre provisorio) 
+Es una app **Responsive** dedicada a la venta de indumentaria/accesorios para la cabeza. La misma será diseñada y desarrollada bajo la premisa de **Mobile-First**.
+
+### Navegación React Router
+React router es la librería encargada de la navegación por nuestra app, renderizando los componentes dependiendo de la ruta que el usuario seleccione. La misma se instaló mediante el comando: **npm install react-router-dom** 
+
+Más info aquí: [https://reactrouter.com/web/guides/quick-start].
+
+### Font Awesome
+La librería **Font Awesome**  se encarga de facilitar iconos para este Ecommerce. La misma se está invocando mediante una etiqueta script con el siguiente enlace: [https://kit.fontawesome.com/44437af0d2.js" crossorigin="anonymous], en la línea 27 del archivo: **index.html**
+
+Más info aquí : [https://fontawesome.com/].
+
+### Listado de productos
+El listado de productos se encuentra en el archivo **products.json**
+Cada producto es un objeto que contiene un "id", "category", "title", "description", "pictureUrl" "price" y "sale".
+
+### Estilos
+Los estilos aún están en proceso y están realizados con **CSS** puro, sin librerías.
