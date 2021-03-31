@@ -20,6 +20,7 @@
 }
 .header__search{
     /*Formulario del buscador*/
+    margin: 0 auto;
 }
 .header__search-input{
     /* transition: transform .2s; */

@@ -4,9 +4,9 @@
     justify-content: center;
     background-color: red; */
     /*======== ======= PRUEBA ======= =========*/
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    background-color: red;
+    background-color: red; */
 }
 .item-link{
     text-decoration: none;

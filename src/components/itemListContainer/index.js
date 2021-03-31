@@ -25,10 +25,10 @@ const ItemListContainer = () => {
     },[categoryId]);
     
     let title; 
-    items.map(item=> item.category == categoryId? title = categoryId : title = undefined)
+    items.map(item=> item.category == categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
     
     return(
-        <div className="itemListContainer">
+        <section className="itemListContainer">
             <h2 className="itemListContainer__title">{title}</h2>
             <ItemList items={items}/>
             <ItemCount 
@@ -37,7 +37,7 @@ const ItemListContainer = () => {
             onAdd={(num)=>{
                 num > 1? console.log(`agregaste ${num} productos`) :console.log(`agregaste ${num} producto`)    
             }}/>
-        </div>
+        </section>
     )
 }
 export default ItemListContainer;
