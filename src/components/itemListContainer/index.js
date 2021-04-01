@@ -20,17 +20,22 @@ const ItemListContainer = () => {
             setItems(res)
         })
     }
+
+    let title; 
+    items.map(item=> item.category == categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
+    let classItemList;
+    if(categoryId == undefined)classItemList = "item-list"
+    else classItemList = "categoryItemsList"
+    
     useEffect(()=>{
         callProducts()
     },[categoryId]);
     
-    let title; 
-    items.map(item=> item.category == categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
     
     return(
         <section className="itemListContainer">
             <h2 className="itemListContainer__title">{title}</h2>
-            <ItemList items={items}/>
+            <ItemList classItemList={classItemList} items={items}/>
             <ItemCount 
             init={1} 
             stock={10} 
