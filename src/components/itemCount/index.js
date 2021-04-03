@@ -8,17 +8,18 @@ const ItemCount = ({init, stock, onAdd}) => {
     useEffect(() =>{
         setCount(init);
         return;
-    }, [init]);
+    },[init]);
 
     const addProduct = () => {
         setCount(count + 1);
     }
-
     const removeProduct = () => {
         setCount(count - 1);
     }
+
     return(
         <div className="itemcount">
+            <span className="itemcount__stock">Stock disponible: {stock}</span>
             <div className="itemcount__buttons">
                 <button 
                 type="button"
@@ -42,12 +43,10 @@ const ItemCount = ({init, stock, onAdd}) => {
             type="button"
             className="itemcount__addcart"
             disabled={stock <= 0 }
-            onClick={()=> onAdd(count)}
-            >
-                Agregar al carrito
+            onClick={()=> onAdd(count)}>
+                {stock <= 0? "No disponible":"Agregar al carrito"}
             </button>
         </div>
-
     )
 }   
 export default ItemCount;

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import ItemCount from "../itemCount";
 import ItemList from "../itemList";
 import {useParams} from "react-router-dom";
 import Products from "../products.json";
@@ -36,12 +35,6 @@ const ItemListContainer = () => {
         <section className="itemListContainer">
             <h2 className="itemListContainer__title">{title}</h2>
             <ItemList classItemList={classItemList} items={items}/>
-            <ItemCount 
-            init={1} 
-            stock={10} 
-            onAdd={(num)=>{
-                num > 1? console.log(`agregaste ${num} productos`) :console.log(`agregaste ${num} producto`)    
-            }}/>
         </section>
     )
 }
