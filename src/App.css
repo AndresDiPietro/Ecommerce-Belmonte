@@ -1,16 +1,12 @@
 body{
   background-color: #EBEBEB;
-  /* background-color: #00ff40; */
 }
 .header{
   background-color: #596aff;
 }
 .main{
-  /* position: relative; */
-  /* max-width: 1200px; */
   padding-top: 1em;
   margin: 0;
-  /* background-color: rgb(219, 16, 16); */
 }
 .footer{
   color: whitesmoke;
@@ -20,6 +16,7 @@ body{
 }
 @media screen and (min-width: 1024px){
   .header{
-    /* padding: .5em; */
+    padding-top: .5em;
+    padding-bottom: .5em;
   }
 }

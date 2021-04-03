@@ -65,6 +65,7 @@
 }
 .navbar__icon{
     margin:  1em;
+    color: black;
 }
 .nav--active{
     transform: translateX(0);
