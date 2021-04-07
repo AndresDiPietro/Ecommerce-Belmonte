@@ -16,7 +16,7 @@ const ItemDetail = ({item}) => {
                 <section className="item-detail__product">
                     <h1 className="item-detail__product-title">{item?.title}</h1>
                     <div className="price">
-                        <span className="item-detail__product-previous">$ {previousPrice}</span>
+                        <div className="item-detail__product-previous">$ {previousPrice}</div>
                         <span className="item-detail__product-price">$ {item?.price}</span>
                         <span className="item-detail__product-sale">{item?.sale}% OFF</span>
                     </div>
@@ -29,8 +29,7 @@ const ItemDetail = ({item}) => {
                         <Link to="/cart">
                             <button className="item-detail__buy-now">Terminar mi compra</button>
                         </Link>
-                    }
-                    
+                    } 
                 </section>
                 <section className="item-detail__description">
                     <h2 className="item-detail__description-title">Descripción</h2>
