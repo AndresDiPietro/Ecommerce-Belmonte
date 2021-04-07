@@ -6,7 +6,7 @@ body{
 }
 .main{
   padding-top: 1em;
-  margin: 0;
+  margin: 0 auto;
   max-width: 1200px;
 }
 .footer{
@@ -15,7 +15,7 @@ body{
 .product{
   color: aliceblue;
 }
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1200px){
   .header{
     padding-top: .5em;
     padding-bottom: .5em;

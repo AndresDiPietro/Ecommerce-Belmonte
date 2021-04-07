@@ -7,7 +7,7 @@
     display: grid;
     grid-template-rows: 60% min-content 1fr;
     width: 18em;
-    height: 26em;
+    min-height: 26em;
     margin: .5em;
     padding: 0 .8em;
     background-color: white;
@@ -77,14 +77,10 @@
     /* background-color: yellowgreen; */
 }
 @media screen and (min-width: 800px){
-    /* .item-list{
-        background-color: rgba(255, 255, 0, 0.513);
-        width: 90% ;
-        margin: 0 auto;
-    } */
     .item{
         width: 14em;
-        height: 20em;
+        min-height: 22em;
+        padding: 0 .8em .8em .8em;
     }
 }
 @media screen and (min-width: 1610px){

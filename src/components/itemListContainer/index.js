@@ -22,6 +22,7 @@ const ItemListContainer = () => {
 
     let title; 
     items.map(item=> item.category == categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
+    
     let classItemList;
     if(categoryId == undefined)classItemList = "item-list"
     else classItemList = "categoryItemsList"
