@@ -2,7 +2,7 @@ import NavBar from './components/navBar/navBar.js';
 import ItemListContainer from "./components/itemListContainer"
 import ItemDetailContainer from './components/itemDetailContainer/index.js';
 import Cart from "./components/cart";
-import CartContext from "./context/cartContext";
+import {CartProvider} from './context/CartContext';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 import "./App.css";
@@ -11,8 +11,8 @@ function App() {
   return (
 
     <BrowserRouter>
+      <CartProvider>
       <>
-      <CartContext.Provider value="">
         <header className="header">
           <NavBar/>
         </header>
@@ -38,8 +38,8 @@ function App() {
         <footer className="footer">
           FOOTER
         </footer>
-      </CartContext.Provider>
       </>
+      </CartProvider>
     </BrowserRouter>
     
   )

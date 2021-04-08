@@ -32,7 +32,7 @@ const NavBar = () => {
                 <input className="header__search-input" placeholder="Buscar producto" onChange={handleChange} type="text" value={keyword} />
             </form>
             
-            <span className="header__cart"><a href="#" className=""><i className="fab fa-opencart navbar__icon icon-cart"></i></a></span>
+            <span className="header__cart"><Link to='/cart' className=""><i className="fab fa-opencart navbar__icon icon-cart"></i></Link></span>
             <nav className={classNav}>
                 <ul className="navbar">
                     <NavItem classItem="navbar__item" link="/category/otoño-invierno" classLink="navbar__link" classIcon="fas fa-wrench navbar__icon" content="Otoño/Invierno"/>

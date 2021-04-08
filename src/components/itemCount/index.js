@@ -16,20 +16,8 @@ const ItemCount = ({init, stock, onAdd}) => {
     const removeProduct = () => {
         setCount(count - 1);
     }
-    // let disponibles
-    // switch (stock) {
-    //     case stock<=0:
-    //         disponibles="Disponibles"
-    //         break;
-    //     case stock==1:
-    //         disponibles="Disponible"
-    //         break;
-    
-    //     case stock>1:
-    //         disponibles="Disponibles"
-    //         break;
-    // }
-    if(stock==0){
+
+    if(stock===0){
         return(
             <div className="itemcount__avail">No disponible</div>
         )

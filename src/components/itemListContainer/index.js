@@ -11,7 +11,7 @@ const ItemListContainer = () => {
     const callProducts = () => {
         const promise = new Promise((resolve) => {
             setTimeout(() => {
-                if(categoryId == undefined) resolve(Products)
+                if(categoryId === undefined) resolve(Products)
                 else resolve(Products.filter(product=> product.category === categoryId))
             },2000)
         })
@@ -21,10 +21,10 @@ const ItemListContainer = () => {
     }
 
     let title; 
-    items.map(item=> item.category == categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
+    items.map(item=> item.category === categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
     
     let classItemList;
-    if(categoryId == undefined)classItemList = "item-list"
+    if(categoryId === undefined)classItemList = "item-list"
     else classItemList = "categoryItemsList"
     
     useEffect(()=>{
