@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 
-// const addItem = (a, b) => {
-//     console.log(a, b)
-
-// } 
 export const CartContext = React.createContext({})
 
 export const CartProvider = ({children}) => {
@@ -11,31 +7,29 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
     const addItem = (item, quantity) => {
-            setCart(cart.push(item))
+        let newItem = {item:item, quantity:quantity}
 
+        if(cart.some(e => e.item.id === newItem.item.id))console.log('el producto está siendo duplicado')
+        else cart.push(newItem)
+        
+        setCart(cart)
     } // agregar cierta cantidad de un ítem al carrito
-    // useEffect(()=>{
-    //     addItem()
-    // },[cart])
 
+    const removeItem = (itemId) => {
+        let newCart = cart.filter(e=> e.item.id !== itemId)
+        setCart(newCart)  
+    } // Remover un item del cart usando su id
+
+    const clear = () => {
+        setCart([])
+    } // Remover todos los items
+        
+        // const isInCart = (id) => {
+            
+        //     }
     return(
-        <CartContext.Provider value={{addItem}}>
+        <CartContext.Provider value={{addItem, cart, removeItem, clear}}>
             {children}
         </CartContext.Provider>
     )
-    // const removeItem = (itemId) => {
-
-    // } // Remover un item del cart por usando su id
-    // const clear = () => {
-
-    // } // Remover todos los items
-
-    // const isInCart = (id) => {
-
-    // }
-
-    // const isInCart = (id) => {
-
-    // }
-
 }

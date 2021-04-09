@@ -13,11 +13,7 @@ const ItemDetail = ({item}) => {
     const cantProducts = (contador) => {
         setCount(contador)
     }
-    
-    
-    const terminarCompra = () => {
-        addItem(item, count)
-    }    
+     
     return(
             <article className="item-detail">
                 <img className="item-detail__img" src={item?.pictureUrl} alt={item?.title}/>
@@ -36,7 +32,7 @@ const ItemDetail = ({item}) => {
                             :
                         <Link to="/cart">
                             <button 
-                            onClick={terminarCompra}
+                            onClick={()=>addItem(item, count)}
                             className="item-detail__buy-now">Terminar mi compra</button>
                         </Link>
                     } 
