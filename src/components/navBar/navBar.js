@@ -25,21 +25,25 @@ const NavBar = () => {
     })
     return(
         <div className="header-container">
+            
             <IconBars active={active} setActive={setActive} classIcon={classIcon}/>
+            
             <span className="header__title"><Link to="/" className="header__title-link">Ecommerce</Link></span>
             
             <form className="header__search" onSubmit={handleSubmit}>
                 <input className="header__search-input" placeholder="Buscar producto" onChange={handleChange} type="text" value={keyword} />
             </form>
             
-            <span className="header__cart"><Link to='/cart' className=""><i className="fab fa-opencart navbar__icon icon-cart"></i></Link></span>
             <nav className={classNav}>
                 <ul className="navbar">
                     <NavItem classItem="navbar__item" link="/category/otoño-invierno" classLink="navbar__link" classIcon="fas fa-wrench navbar__icon" content="Otoño/Invierno"/>
                     <NavItem classItem="navbar__item" link="/category/primavera-verano" classLink="navbar__link" classIcon="fas fa-tools navbar__icon" content="Primavera/Verano"/>
-                    <CartWidget classItem="navbar__item cart-Widget" link="#" classLink="navbar__link" content=""/>
                 </ul>
             </nav>
+            
+            <CartWidget/>
+            
+            {/* <span className="header__cart"><Link to='/cart' className=""><i className="fab fa-opencart navbar__icon icon-cart"></i></Link></span> */}
         </div>
     )
 };

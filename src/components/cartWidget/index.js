@@ -1,8 +1,10 @@
 import React from "react";
-import "./cartWidget.css"
+import {Link} from 'react-router-dom';
+import "./cartWidget.css";
+
 const CartWidget = (props) => {
     return(
-        <li className={props.classItem}><a href={props.link} className={props.classLink}><i className="fab fa-opencart navbar__icon"></i></a></li>
+        <span className="car-widget"><Link to='/cart' className="car-widget__link"><i className="fab fa-opencart navbar__icon icon-cart"></i></Link></span>
     )
 }
 
