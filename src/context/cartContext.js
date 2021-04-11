@@ -38,7 +38,7 @@ export const CartProvider = ({children}) => {
         const newCart = cart.filter(e=> e.item.id !== newItem.id)
         
         setCart([...newCart, newProduct]) 
-        console.log(`Nueva cantidad: ${newQuantity}`)
+        // console.log(`Nueva cantidad: ${newQuantity}`)
     }
 
     return(
