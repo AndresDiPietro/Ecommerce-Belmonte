@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext} from 'react'
 import {CartContext} from '../../context/CartContext'
 
 const CartItem = ({item, cantidad, remove}) => {
-    console.log('item renderizado')
+    // console.log('item renderizado')
     const {newCantItems} = useContext(CartContext)
 
     let previousPrice = item?.price+(item?.sale/100)*item?.price;
@@ -19,9 +19,6 @@ const CartItem = ({item, cantidad, remove}) => {
         setContador(cantidad - 1);
         newCantItems(newItem, count-1)
     }
-    useEffect(()=>{
-
-    },[contador])
     
     return(
         <article >
