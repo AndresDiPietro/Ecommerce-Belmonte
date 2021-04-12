@@ -1,14 +1,14 @@
-import React, {useState, useContext} from "react";
-import "./itemdetail.css";
-import ItemCount from "../itemCount";
-import { Link } from "react-router-dom";
+import React, {useState, useContext} from "react"
+import "./itemdetail.css"
+import ItemCount from "../itemCount"
+import { Link } from "react-router-dom"
 import {CartContext} from '../../context/CartContext'
 
 const ItemDetail = ({item}) => {
     const {addItem} = useContext(CartContext)
 
-    let previousPrice = item?.price+(item?.sale/100)*item?.price;
-    const [count, setCount] = useState(0);
+    let previousPrice = item?.price+(item?.sale/100)*item?.price
+    const [count, setCount] = useState(0)
     
     const cantProducts = (contador) => {
         setCount(contador)
@@ -44,4 +44,4 @@ const ItemDetail = ({item}) => {
             </article>
     )
 }
-export default ItemDetail;
+export default ItemDetail

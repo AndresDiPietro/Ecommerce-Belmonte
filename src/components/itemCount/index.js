@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from "react";
-import "./itemcount.css";
+import React, {useEffect, useState} from "react"
+import "./itemcount.css"
 
 const ItemCount = ({init, stock, onAdd}) => {
     
-    const [count, setCount] = useState(init);
+    const [count, setCount] = useState(init)
 
     useEffect(() =>{
-        setCount(init);
-        return;
-    },[init]);
+        setCount(init)
+        return
+    },[init])
 
     const addProduct = () => {
-        setCount(count + 1);
+        setCount(count + 1)
     }
     const removeProduct = () => {
-        setCount(count - 1);
+        setCount(count - 1)
     }
 
     if(stock===0){
@@ -62,4 +62,4 @@ const ItemCount = ({init, stock, onAdd}) => {
         </>
     )
 }   
-export default ItemCount;
+export default ItemCount

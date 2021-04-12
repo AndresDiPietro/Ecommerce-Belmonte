@@ -1,40 +1,46 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import {CartContext} from '../../context/CartContext'
 
-const CartItem = ({item, cantidad, remove}) => {
-    // console.log('item renderizado')
+const CartItem = ({item, quantity, remove}) => {
+
     const {newCantItems} = useContext(CartContext)
 
-    let previousPrice = item?.price+(item?.sale/100)*item?.price;
+    let previousPrice = item?.price+(item?.sale/100)*item?.price
 
-    let [contador, setContador] = useState(cantidad)
+    let [count, setCount] = useState(quantity)
 
-    const addProduct = (newItem, count) => {
-
-        setContador(cantidad + 1);
-
-        newCantItems(newItem, count+1)
+    const addProduct = () => {      
+        setCount(count + 1)
+        
+        // newCantItems(item, count+1)
     }
-    const removeProduct = (newItem, count) => {
-        setContador(cantidad - 1);
-        newCantItems(newItem, count-1)
+    
+    const removeProduct = () => {
+        setCount(count - 1)
+        
+        // newCantItems(item, count-1)
     }
+    
+    useEffect(()=>{
+        newCantItems(item, count)
+        
+    },[count])
     
     return(
         <article >
             <img src={item?.pictureUrl} alt={item?.title}/>
             <h2>{item?.title}</h2>
-            <div>{contador}</div>
+            <div>{count}</div>
             <button 
                 type="button"
-                disabled={contador <= 1}
-                onClick={()=>removeProduct(item, contador)}
+                disabled={count <= 1}
+                onClick={()=>removeProduct()}
                 >
                     -
             </button>
             <button 
                 type="button"
-                onClick={()=>addProduct(item, contador)}
+                onClick={()=>addProduct()}
                 >
                     +
             </button>

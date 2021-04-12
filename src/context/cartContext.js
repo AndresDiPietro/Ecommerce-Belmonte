@@ -9,7 +9,7 @@ export const CartProvider = ({children}) => {
     const addItem = (newItem, newQuantity) => {
         let {quantity = 0} = cart.find(e=> e.item.id === newItem.id) || {}
         let newCart = cart.filter(e => e.item.id !== newItem.id)
-        setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }])  
+        setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }]) 
     } // agregar cierta cantidad de un ítem al carrito
 
     const removeItem = (itemId) => {
@@ -21,13 +21,13 @@ export const CartProvider = ({children}) => {
         setCart([])
     } // Remover todos los items
         
-    const calcularTotal = () => {
+    const calculateQuantity = () => {
         return cart.reduce((count, cantidad)=>{
             return count + cantidad.quantity
         },0)
     }//Calcular cantidad de items en el carrito
 
-    const calcularPrecio = () => {
+    const calculatePrice = () => {
         return cart.reduce((count, item)=>{
             return count + item.quantity * item.item.price
         },0)
@@ -36,13 +36,17 @@ export const CartProvider = ({children}) => {
     const newCantItems = (newItem, newQuantity) => {
         const newProduct = {item:newItem, quantity:newQuantity}
         const newCart = cart.filter(e=> e.item.id !== newItem.id)
-        
         setCart([...newCart, newProduct]) 
-        // console.log(`Nueva cantidad: ${newQuantity}`)
-    }
+        
+        //Prueba para agregar el nuevo item en el mismo índice del array ¿Por qué no funciona cart.splice()?
+        // const indexOfNewItem = cart.findIndex(e=>e.item.id === newItem.id)
+        // const newProduct = {item:newItem, quantity:newQuantity}
+        // const newCart = cart.splice(indexOfNewItem,1,newProduct)
+        // setCart(newCart)
+    }//Modificar la cántidad de unidades de cada producto en el cart
 
     return(
-        <CartContext.Provider value={{addItem, cart, removeItem, clear, calcularTotal, calcularPrecio, newCantItems}}>
+        <CartContext.Provider value={{addItem, cart, removeItem, clear, calculateQuantity, calculatePrice, newCantItems}}>
             {children}
         </CartContext.Provider>
     )
