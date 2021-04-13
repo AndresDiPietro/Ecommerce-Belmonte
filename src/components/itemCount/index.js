@@ -16,6 +16,9 @@ const ItemCount = ({init, stock, onAdd}) => {
     const removeProduct = () => {
         setCount(count - 1)
     }
+    const prueba = () => {
+        onAdd(count)
+    }
 
     if(stock===0){
         return(
@@ -55,7 +58,7 @@ const ItemCount = ({init, stock, onAdd}) => {
                     type="button"
                     className="itemcount__addcart"
                     disabled={stock <= 0 }
-                    onClick={()=> onAdd(count)}>
+                    onClick={prueba}>
                     {stock <= 0? "No disponible":"Agregar al carrito"}
                 </button>
             </form>

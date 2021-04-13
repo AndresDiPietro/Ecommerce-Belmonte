@@ -4,5 +4,18 @@
     /* background-color: coral; */
 }
 .car-widget__link{
-
+    text-decoration: none;
+    position: relative;
+}
+.car-widget__count{
+    text-align: center;
+    background-color: red;
+    color: whitesmoke;
+    position: absolute;
+    border-radius: 10px;
+    padding-bottom: 2px;
+    width: 16px;
+    height: 16px;
+    left: 35px;
+    top: 0px;
 }

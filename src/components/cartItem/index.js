@@ -1,31 +1,32 @@
-import React, { useState, useContext, useEffect} from 'react'
+import React, { useState, useContext} from 'react'
 import {CartContext} from '../../context/CartContext'
 
-const CartItem = ({item, quantity, remove}) => {
+const CartItem = ({item, quantity, stock, remove}) => {
 
     const {newCantItems} = useContext(CartContext)
 
     let previousPrice = item?.price+(item?.sale/100)*item?.price
 
     let [count, setCount] = useState(quantity)
-
+    
     const addProduct = () => {      
         setCount(count + 1)
-        
-        // newCantItems(item, count+1)
+        newCantItems(item, count+1)
     }
     
     const removeProduct = () => {
         setCount(count - 1)
-        
-        // newCantItems(item, count-1)
+        newCantItems(item, count-1)
     }
     
-    useEffect(()=>{
-        newCantItems(item, count)
-        
-    },[count])
+    const deleteProduct = () => {
+        remove(item.id)
+    }
     
+    const buyNow = () => {
+        console.log('Comprar ahora')
+    }
+
     return(
         <article >
             <img src={item?.pictureUrl} alt={item?.title}/>
@@ -34,13 +35,14 @@ const CartItem = ({item, quantity, remove}) => {
             <button 
                 type="button"
                 disabled={count <= 1}
-                onClick={()=>removeProduct()}
+                onClick={removeProduct}
                 >
                     -
             </button>
             <button 
                 type="button"
-                onClick={()=>addProduct()}
+                disabled={count >= stock}
+                onClick={addProduct}
                 >
                     +
             </button>
@@ -50,14 +52,14 @@ const CartItem = ({item, quantity, remove}) => {
                 <span>$ {item?.price}</span>
             </div>
             <button 
-                onClick={()=>remove(item.id)}>
+                onClick={deleteProduct}>
                 Eliminar
             </button>
             <button 
-                onClick={()=>console.log('Comprar ahora')}>
+                onClick={buyNow}>
                 Comprar ahora
             </button>
         </article>
     )
 }
-export default CartItem;
+export default CartItem

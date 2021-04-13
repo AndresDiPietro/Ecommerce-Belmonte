@@ -7,9 +7,20 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
     const addItem = (newItem, newQuantity) => {
-        let {quantity = 0} = cart.find(e=> e.item.id === newItem.id) || {}
-        let newCart = cart.filter(e => e.item.id !== newItem.id)
-        setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }]) 
+        // let {quantity = 0} = cart.find(e=> e.item.id === newItem.id) || {}
+        // let newCart = cart.filter(e => e.item.id !== newItem.id)
+        // setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }]) 
+    //Prueba de acá para abajo
+
+        if(cart.some(e=>e.item.id === newItem.id)){
+            let {quantity} = cart.find(e=> e.item.id === newItem.id)
+            let newCart = cart.filter(e => e.item.id !== newItem.id)
+            setCart([...newCart, { item: newItem , quantity: quantity + newQuantity}]) 
+            
+        }else {
+            const newProduct = { item: newItem , quantity: newQuantity }
+            setCart([...cart, newProduct])
+        }
     } // agregar cierta cantidad de un ítem al carrito
 
     const removeItem = (itemId) => {
@@ -34,15 +45,16 @@ export const CartProvider = ({children}) => {
     }//Calcular precio total del carrito
 
     const newCantItems = (newItem, newQuantity) => {
-        const newProduct = {item:newItem, quantity:newQuantity}
-        const newCart = cart.filter(e=> e.item.id !== newItem.id)
-        setCart([...newCart, newProduct]) 
-        
-        //Prueba para agregar el nuevo item en el mismo índice del array ¿Por qué no funciona cart.splice()?
-        // const indexOfNewItem = cart.findIndex(e=>e.item.id === newItem.id)
         // const newProduct = {item:newItem, quantity:newQuantity}
-        // const newCart = cart.splice(indexOfNewItem,1,newProduct)
-        // setCart(newCart)
+        // const newCart = cart.filter(e=> e.item.id !== newItem.id)
+        // setCart([...newCart, newProduct]) 
+        
+        //Prueba de acá hacia abajo
+        const indexOfNewItem = cart.findIndex(e=>e.item.id === newItem.id)
+        const newProduct = {item:newItem, quantity:newQuantity}
+        const carrito = cart.slice()
+        carrito.splice(indexOfNewItem,1,newProduct)
+        setCart(carrito)
     }//Modificar la cántidad de unidades de cada producto en el cart
 
     return(

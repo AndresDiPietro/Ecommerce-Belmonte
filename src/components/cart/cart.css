@@ -1,0 +1,23 @@
+.cart{
+    background-color: violet;
+}
+.cart-item{
+    
+}
+.cart__total{
+    
+}
+.cart__clear{
+    
+}
+.cart__empty{
+    /* background-color: rgb(130, 238, 197); */
+    
+}
+.cart__empty-link{
+    
+}
+.cart__empty-button{
+    /* background-color: rgb(130, 238, 197); */
+
+}
