@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react"
 import ItemList from "../itemList"
 import {useParams} from "react-router-dom"
-import Products from "../products.json"
 import "./itemListContainer.css"
 import Loading from '../loading'
 import {getFirestore} from '../../firebase'
@@ -10,33 +9,20 @@ const ItemListContainer = () => {
     const [items, setItems] = useState([])
     const {categoryId} = useParams()
     const [loader, setLoader] = useState(false)
-    
-    // const callProducts = () => {
-    //     setLoader(true)
-    //     const promise = new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             if(categoryId === undefined) resolve(Products)
-    //             else resolve(Products.filter(product=> product.category === categoryId))
-    //             setLoader(false)
-    //         },2000)
-    //     })
-    //     promise.then((res)=>{
-    //         setItems(res)
-    //     })
-    // }
+
     const callProducts = () => {
         setLoader(true)
         const db = getFirestore()
         const itemsCollection = db.collection('items')
-        const prom = itemsCollection.get()
-        
+        const filter = categoryId? itemsCollection.where('category', '==', categoryId) : null
+        const prom = categoryId? filter.get() : itemsCollection.get()
+
         prom.then((res)=>{
             if(res.size>0){
                 setItems(res.docs.map(doc =>{
                     return {id: doc.id, ...doc.data()}
                 }))
             }
-            console.log(items)
         })
         setLoader(false)
     }
