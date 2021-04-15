@@ -6,6 +6,7 @@ import './cart.css'
 
 const Cart = () => {
     const {cart, removeItem, clear, calculatePrice} = useContext(CartContext)
+    console.log(cart)
     
     return(
         <section className="cart">
