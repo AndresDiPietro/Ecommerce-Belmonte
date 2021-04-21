@@ -12,9 +12,6 @@ const ItemDetail = ({item}) => {
     const addNewProduct = (contador) => {
         addItem(item, contador)
     }
-    // const buyNow = () => {
-    //     addItem(item, count)
-    // }
 
     return(
             <article className="item-detail">
@@ -34,8 +31,7 @@ const ItemDetail = ({item}) => {
                         />
                     <Link to="/cart">
                         <button 
-                        // onClick={buyNow}
-                        className="item-detail__buy-now">Terminar mi compra</button>
+                        className="item-detail__buy-now">Ir al carrito</button>
                     </Link>
                     
                 </section>

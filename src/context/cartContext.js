@@ -7,10 +7,6 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
     const addItem = (newItem, newQuantity) => {
-        // let {quantity = 0} = cart.find(e=> e.item.id === newItem.id) || {}
-        // let newCart = cart.filter(e => e.item.id !== newItem.id)
-        // setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }]) 
-    //Prueba de acá para abajo
 
         if(cart.some(e=>e.item.id === newItem.id)){
             let {quantity} = cart.find(e=> e.item.id === newItem.id)
@@ -45,11 +41,6 @@ export const CartProvider = ({children}) => {
     }//Calcular precio total del carrito
 
     const newCantItems = (newItem, newQuantity) => {
-        // const newProduct = {item:newItem, quantity:newQuantity}
-        // const newCart = cart.filter(e=> e.item.id !== newItem.id)
-        // setCart([...newCart, newProduct]) 
-        
-        //Prueba de acá hacia abajo
         const indexOfNewItem = cart.findIndex(e=>e.item.id === newItem.id)
         const newProduct = {item:newItem, quantity:newQuantity}
         const carrito = cart.slice()
@@ -58,7 +49,7 @@ export const CartProvider = ({children}) => {
     }//Modificar la cántidad de unidades de cada producto en el cart
 
     return(
-        <CartContext.Provider value={{addItem, cart, removeItem, clear, calculateQuantity, calculatePrice, newCantItems}}>
+        <CartContext.Provider value={{addItem, cart, setCart, removeItem, clear, calculateQuantity, calculatePrice, newCantItems}}>
             {children}
         </CartContext.Provider>
     )

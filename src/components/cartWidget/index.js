@@ -5,7 +5,7 @@ import "./cartWidget.css"
 
 const CartWidget = () => {
     const {calculateQuantity} = useContext(CartContext)
-    if(calculateQuantity()!=0){
+    
         return(
             <span className="car-widget">
                 <Link to='/cart' className="car-widget__link">
@@ -14,8 +14,5 @@ const CartWidget = () => {
                 </Link>
             </span>
         )
-    }else return(
-        null
-    )
 }
 export default CartWidget
