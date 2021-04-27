@@ -35,6 +35,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.109);
     /* padding-top: .5em; */
     padding-bottom: .5em;
+    position: relative;
 
 }
 .item__previous-price{
@@ -75,6 +76,16 @@
     font-size: .9em;
     font-weight: 300;
     /* background-color: yellowgreen; */
+}
+.item__nostock{
+    background-color: rgba(0, 0, 0, 0.767);
+    color:white;
+    position: absolute;
+    width: 100%;
+    top: -.5em;
+    /* left: 25%; */
+    text-align: center;
+    padding: .1em 0;
 }
 @media screen and (min-width: 800px){
     .item{

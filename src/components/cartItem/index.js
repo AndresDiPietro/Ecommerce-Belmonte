@@ -23,10 +23,6 @@ const CartItem = ({item, quantity, stock, remove}) => {
         remove(item.id)
     }
     
-    const buyNow = () => {
-        console.log('Comprar ahora')
-    }
-
     return(
         <article >
             <img src={item?.pictureUrl} alt={item?.title}/>
@@ -48,16 +44,12 @@ const CartItem = ({item, quantity, stock, remove}) => {
             </button>
             <div>
                 <span>{item?.sale}% OFF</span>
-                <div>$ {previousPrice}</div>
-                <span>$ {item?.price}</span>
+                <div>Antes $ {previousPrice}</div>
+                <span>Ahora $ {item?.price}</span>
             </div>
             <button 
                 onClick={deleteProduct}>
                 Eliminar
-            </button>
-            <button 
-                onClick={buyNow}>
-                Comprar ahora
             </button>
         </article>
     )

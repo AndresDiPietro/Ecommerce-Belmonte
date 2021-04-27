@@ -11,10 +11,9 @@ import {getFirestore} from '../../firebase'
 const Cart = () => {
     const {cart, setCart, removeItem, clear, calculatePrice} = useContext(CartContext)
     const [buyId, setBuyId] = useState(null)
-    const [prueba, setPrueba] = useState(null)
+    const [endBuy, setEndBuy] = useState(null)
     
     const newOrder = (buyer) => {
-
         const db = getFirestore()
         const orderColl = db.collection('orders')
 
@@ -30,12 +29,12 @@ const Cart = () => {
         
         .then(({id})=>{
             setBuyId({id})
+            console.log(`Su compra ha sido exitosa, su comprobante es ${id}`)
             
         })
         .catch(err=>{
             console.log(err)
         })
-        // .finally(console.log(order))
 
 //-----------------------------------------------------------------------
 
@@ -60,11 +59,10 @@ const Cart = () => {
         })
 
     }
-    const pruebaIf = () => {
-        setPrueba(true)
+    const finishBuy = () => {
+        setEndBuy(true)
     }
-
-
+    
     return(
         <section className="cart">
             {cart.map(e=> <CartItem className="cart-item" item={e.item} quantity={e.quantity} key={e.item.id} stock={e.item.stock} remove={removeItem}/>)}
@@ -75,14 +73,13 @@ const Cart = () => {
                 <button className="cart__clear" onClick={clear}>
                     Vaciar carrito 
                 </button>
-                <button className="cart__finish" onClick={pruebaIf}>
+                <button className="cart__finish" onClick={finishBuy}>
                     Finalizar compra
                 </button>
-                {prueba? <FormCart buyer={newOrder}></FormCart>
+                {endBuy? <FormCart buyer={newOrder}></FormCart>
                     :
                 null
                 }
-                
             </div>
                 :
             <div className="cart__empty">
