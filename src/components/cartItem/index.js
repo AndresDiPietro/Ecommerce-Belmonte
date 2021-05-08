@@ -1,11 +1,10 @@
 import React, { useState, useContext} from 'react'
 import {CartContext} from '../../context/CartContext'
+import './cart-item.css'
 
 const CartItem = ({item, quantity, stock, remove}) => {
 
     const {newCantItems} = useContext(CartContext)
-
-    let previousPrice = item?.price+(item?.sale/100)*item?.price
 
     let [count, setCount] = useState(quantity)
     
@@ -24,31 +23,33 @@ const CartItem = ({item, quantity, stock, remove}) => {
     }
     
     return(
-        <article >
-            <img src={item?.pictureUrl} alt={item?.title}/>
-            <h2>{item?.title}</h2>
-            <div>{count}</div>
-            <button 
-                type="button"
-                disabled={count <= 1}
-                onClick={removeProduct}
-                >
-                    -
-            </button>
-            <button 
-                type="button"
-                disabled={count >= stock}
-                onClick={addProduct}
-                >
-                    +
-            </button>
-            <div>
-                <span>{item?.sale}% OFF</span>
-                <div>Antes $ {previousPrice}</div>
-                <span>Ahora $ {item?.price}</span>
-            </div>
-            <button 
-                onClick={deleteProduct}>
+        <article className='cart-item'>
+            <img src={item?.pictureUrl} alt={item?.title} className='cart-item__img'/>
+            <h2 className='cart-item__title' >{item?.title}</h2>
+            <div className='cart-item__add'>
+                <div className='cart-item__buttons'>
+                    <button 
+                        className='cart-item__minus'
+                        type="button"
+                        disabled={count <= 1}
+                        onClick={removeProduct}
+                        >
+                            -
+                    </button>
+                    <div className='cart-item__count'>{count}</div>
+                    <button 
+                        className='cart-item__plus'
+                        type="button"
+                        disabled={count >= stock}
+                        onClick={addProduct}
+                        >
+                            +
+                    </button>
+                </div>
+                <span className='cart-item__stock'>{item?.stock}disponibles</span>
+            </div>    
+            <span className='cart-item__price'>${item?.price}</span>
+            <button className='cart-item__delete'onClick={deleteProduct}>
                 Eliminar
             </button>
         </article>

@@ -30,9 +30,9 @@ const NavBar = () => {
             
             <span className="header__title"><Link to="/" className="header__title-link">Ecommerce</Link></span>
             
-            <form className="header__search" onSubmit={handleSubmit}>
+            {/* <form className="header__search" onSubmit={handleSubmit}>
                 <input className="header__search-input" placeholder="Buscar producto" onChange={handleChange} type="text" value={keyword} />
-            </form>
+            </form> */}
             
             <nav className={classNav}>
                 <ul className="navbar">
