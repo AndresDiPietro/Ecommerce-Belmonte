@@ -1,76 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import {CartContext} from '../../context/CartContext'
+import { Link } from "react-router-dom"
+import { newName, newSurName, newPhone, newEmail, newSubmit, valid} from '../../regEx'
+import {newOrder} from '../../firebase/firestore'
 import './form.css'
-const validateUserName = (username) => {
-    const userNameRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]{3,16}$/
-    if(userNameRegex.test(username)) return true //console.log('username válido')
-    // else console.log('username incorrecto')
-}
-const validatePhone = (phone) => {
-    const userPhoneRegex = /^[1-9]{7,16}$/
-    if(userPhoneRegex.test(phone)) return true //console.log('userphone válido')
-    // else console.log('userphone incorrecto')
-}
-const validateEmail = (email) => {
-    const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    if(emailRegex.test(email)) return true //console.log('email válido')
-    // else console.log('email incorrecto')
-}
-
-const FormCart = ({buyer}) => {
-    const [formIsValid, setFormIsValid] = useState({name: false, phone: false, email: false})
+const FormCart = () => {
+    const [formIsValid, setFormIsValid] = useState({name: false, surName:false, phone: false, email: false})
+    const [idBuy, setIdBuy] = useState(null)
+    const {cart, setCart, calculatePrice} = useContext(CartContext)
     
-    const newName = (e) => {
-        if(validateUserName(e.target.value.trim())){        
-            const newObj = {...formIsValid, name :e.target.value.trim()}
-            setFormIsValid(newObj)
-        }else {
-            const newObj = {...formIsValid, name :false}
-            setFormIsValid(newObj)
-        }
+    const newBuy = ()=>{
+        newOrder(formIsValid, setIdBuy, cart, setCart, calculatePrice)
     }
-    const newPhone = (e) => {
-        if(validatePhone(e.target.value.trim())){        
-            const newObj = {...formIsValid, phone :e.target.value.trim()}
-            setFormIsValid(newObj)
-        }else {
-            const newObj = {...formIsValid, phone :false}
-            setFormIsValid(newObj)
-        }
-    }
-    const newEmail = (e) => {
-        if(validateEmail(e.target.value.trim())){        
-            const newObj = {...formIsValid, email :e.target.value.trim()}
-            setFormIsValid(newObj)
-        }else {
-            const newObj = {...formIsValid, email :false}
-            setFormIsValid(newObj)
-        }
-    }
-    const newSubmit = (e) => {
-        e.preventDefault()
-        if(formIsValid.name !== false && formIsValid.phone !== false && formIsValid.email !== false){
-        buyer(formIsValid)
-        }
-    }
-    const valid = ()=>{
-        if(formIsValid.name !== false && formIsValid.phone !== false && formIsValid.email !== false) return false
-        else return true
-    }
-
+    
+    if (idBuy) return(
+        <div className='voucher'>
+            <h1 className='voucher__title'>Su compra ha sido exitosa!</h1>
+            <p className='voucher__p'>Código de comprobante: <span className='voucher__id'>{idBuy.id}</span></p>
+            <Link className='voucher__link' to='/'>Aceptar</Link>
+        </div>
+    ) 
     return(
-        <form onSubmit={newSubmit}>
-            <label htmlFor='name'>Nombre</label>
-            <input className='form__input' id='name' type='text' placeholder='nombre' minLength='3' maxLength='16' required onChange={newName}/>
-
-            <label htmlFor='phone'>Teléfono</label>
-            <input className='form__input' id='phone' type='number' placeholder='1234' min='7' required onChange={newPhone}/>
-
-            <label htmlFor='email'>Email</label>
-            <input className='form__input' id='email' type='email' placeholder='email' required onChange={newEmail}/>
-
-            <input disabled={valid()} type='submit' />
-        </form>
+        <div>  
+            <form className='cart-form' onSubmit={(e)=>newSubmit(e, formIsValid, newBuy)}>
+                <div className='cart-form__container'>
+                    <label className='cart-form__label' htmlFor='name'>Nombre
+                        <input className='cart-form__input' id='name' type='text' placeholder='Sam' minLength='3' maxLength='16' required onChange={(e)=>newName(e,setFormIsValid, formIsValid)}/>
+                    </label>
+                    <label className='cart-form__label' htmlFor='surname'>Apellido
+                        <input className='cart-form__input' id='surname' type='text' placeholder='Peterson' minLength='3' maxLength='16' required onChange={(e)=>newSurName(e,setFormIsValid, formIsValid)}/>
+                    </label>
+                    <label className='cart-form__label' htmlFor='phone'>Teléfono
+                        <input className='cart-form__input' id='phone' type='number' placeholder='1534254' min='7' required onChange={(e)=>newPhone(e,setFormIsValid, formIsValid)}/>
+                    </label>
+                    <label className='cart-form__label' htmlFor='email'>Email
+                        <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmail(e,setFormIsValid, formIsValid)}/>
+                    </label>
+                    <input className='cart-form__submit' disabled={valid(formIsValid)} type='submit' />
+                </div>
+            </form>
+        </div>
     )
 }
 export default FormCart

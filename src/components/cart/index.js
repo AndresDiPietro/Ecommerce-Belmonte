@@ -1,67 +1,13 @@
-import React, {useContext, useState} from "react"
+import React, {useContext} from "react"
 import { Link } from "react-router-dom"
 import {CartContext} from '../../context/CartContext'
+
 import CartItem from "../cartItem"
 import './cart.css'
-import FormCart from '../form'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import {getFirestore} from '../../firebase'
 
 const Cart = () => {
-    const {cart, setCart, removeItem, clear, calculatePrice} = useContext(CartContext)
-    const [buyId, setBuyId] = useState(null)
-    const [endBuy, setEndBuy] = useState(null)
-    
-    const newOrder = (buyer) => {
-        const db = getFirestore()
-        const orderColl = db.collection('orders')
 
-        let order = {}
-        order.buyer = buyer
-        order.total = calculatePrice()
-        order.date = firebase.firestore.Timestamp.fromDate(new Date())
-        order.items = cart.map(e=> {
-            return  {id:e.item.id, title:e.item.title, quantity:e.quantity, price:e.item.price*e.quantity}
-        })  
-
-        orderColl.add(order)
-        
-        .then(({id})=>{
-            setBuyId({id})
-            console.log(`Su compra ha sido exitosa, su comprobante es ${id}`)
-            
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-
-//-----------------------------------------------------------------------
-
-        const itemToUpdate = db.collection('items').where(
-            firebase.firestore.FieldPath.documentId(), 'in' , cart.map(i =>i.item.id)
-        )
-    
-        const batch = db.batch()
-    
-        itemToUpdate.get()
-        .then(collection=>{
-            collection.docs.forEach(docSnapshot => {
-                batch.update(docSnapshot.ref, {
-                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity
-                })
-            })
-            batch.commit()
-            .then(res => {
-                console.log(res)
-            })
-            setCart([])
-        })
-
-    }
-    const finishBuy = () => {
-        setEndBuy(true)
-    }
+    const {cart, removeItem, clear, calculatePrice} = useContext(CartContext)
     
     return(
         <section className="cart">
@@ -76,21 +22,15 @@ const Cart = () => {
                 <span className='cart__total-price'>
                     Precio total: {calculatePrice()}
                 </span>
-                <button className="cart__finish" onClick={finishBuy}>
-                    Continuar compra
-                </button>
-                {endBuy? <FormCart buyer={newOrder}></FormCart>
-                    :
-                null
-                }
+                <Link to='/form' className="cart__finish">
+                        Continuar compra
+                </Link>
             </div>
                 :
             <div className="cart__empty">
                 Tu carrito está vacío
                 <Link className="cart__empty-link" to='/'>
-                    <button className="cart__empty-button">
                         Ir por productos
-                    </button>
                 </Link>
             </div>}
         </section>

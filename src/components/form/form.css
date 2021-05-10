@@ -1,3 +1,57 @@
 .form__input:invalid{
     border: 2px solid yellow;
 }
+.cart-form{
+    margin: auto;
+    padding: 1em;
+    /* background-color: white; */
+}
+.cart-form__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: .5em auto;
+    /* background-color: rgb(216, 174, 5); */
+}
+.cart-form__label{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: .5em;
+    /* background-color: brown; */
+}
+.cart-form__input{
+    width: 70%;
+    padding: .3em;
+    margin-left: auto;
+    /* background-color: cadetblue; */
+}
+.cart-form__submit{
+    cursor: pointer;
+    width: 100%;
+    padding: .5em;
+    border-radius: 3px;
+    border: none;
+    background-color: blue;
+}
+.voucher{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5em 1em 1.5em;
+    background-color: rgba(22, 228, 56, 0.727);
+}
+.voucher__title{
+    font-weight: 500;
+}
+.voucher__id{
+    font-weight: 500;
+}
+.voucher__link{
+    margin-left: auto;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-decoration: none;
+}

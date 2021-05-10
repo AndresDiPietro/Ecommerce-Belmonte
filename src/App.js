@@ -6,6 +6,7 @@ import {CartProvider} from './context/CartContext';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 import "./App.css";
+import FormCart from './components/form/index.js';
 
 function App() {
   return (
@@ -18,18 +19,27 @@ function App() {
         </header>
         <main className="main">
           <Switch>
+
             <Route exact path="/">
               <ItemListContainer/>
             </Route>
+            
             <Route path="/category/:categoryId">
               <ItemListContainer />
             </Route>
+            
             <Route path="/item/:itemId">
               <ItemDetailContainer/>
             </Route>
+            
             <Route exact path="/cart">
               <Cart/>
             </Route>
+            
+            <Route exact path="/form">
+              <FormCart/>
+            </Route>
+            
             <Route path="*">
               404
             </Route>

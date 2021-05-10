@@ -20,11 +20,7 @@ const ItemCount = ({init, stock, onAdd}) => {
         onAdd(count)
     }
 
-    if(stock===0){
-        return(
-            <div className="itemcount__avail">No disponible</div>
-        )
-    }else return(
+    return(
         <>  
             <div className="stock">
                 <span className="itemcount__avail">Stock disponible</span>
@@ -59,7 +55,7 @@ const ItemCount = ({init, stock, onAdd}) => {
                     className="itemcount__addcart"
                     disabled={stock <= 0 }
                     onClick={prueba}>
-                    {stock <= 0? "No disponible":"Agregar al carrito"}
+                    Agregar al carrito
                 </button>
             </form>
         </>

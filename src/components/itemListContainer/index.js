@@ -23,8 +23,8 @@ const ItemListContainer = () => {
                     return {id: doc.id, ...doc.data()}
                 }))
             }
+            setLoader(false)
         })
-        setLoader(false)
     }
     
     let title

@@ -1,19 +1,28 @@
-import React, {useContext} from "react"
+import React, {useContext, useState} from "react"
 import "./itemdetail.css"
 import ItemCount from "../itemCount"
+import Loading from '../loading'
 import { Link } from "react-router-dom"
 import {CartContext} from '../../context/CartContext'
 
 const ItemDetail = ({item}) => {
     const {addItem} = useContext(CartContext)
-
     const previousPrice = item?.price+(item?.sale/100)*item?.price
+    const [addToCart, setAddToCart] = useState(false)
 
     const addNewProduct = (contador) => {
         addItem(item, contador)
+        setAddToCart(!addToCart)
+        setTimeout(()=>{
+            setAddToCart(false)
+        },3000)
     }
-
     return(
+        <div>
+            {addToCart?<div className='item-add-cart'>Agregaste al <Link to='/cart' className='item-add-cart__link'>carrito!</Link> </div>:null}
+            {!item?
+            <Loading/>
+            :        
             <article className="item-detail">
                 <img className="item-detail__img" src={item?.pictureUrl} alt={item?.title}/>
                 <section className="item-detail__product">
@@ -29,9 +38,9 @@ const ItemDetail = ({item}) => {
                         stock={item?.stock} 
                         onAdd={addNewProduct}
                         />
-                    <Link to="/cart">
+                    <Link to="/">
                         <button 
-                        className="item-detail__buy-now">Ir al carrito</button>
+                        className="item-detail__buy-now">Ver más productos</button>
                     </Link>
                     
                 </section>
@@ -40,6 +49,8 @@ const ItemDetail = ({item}) => {
                     <p className="item-detail__description-paragraph">{item?.description}</p>
                 </section>
             </article>
+            }
+        </div>
     )
 }
 export default ItemDetail

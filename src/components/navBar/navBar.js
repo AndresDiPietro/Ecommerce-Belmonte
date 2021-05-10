@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavItem from "./navItems.js";
 import IconBars from "../iconBars/iconBars";
 import CartWidget from "../cartWidget";
@@ -12,17 +12,17 @@ const NavBar = () => {
     const classIcon = active ? "navbar__icon-bars" : "navbar__icon-bars navbar__icon-bars--active";
     const classNav = active ? "nav" : "nav nav--active";
     
-    const [keyword, setKeyword] = useState("");
-    const handleSubmit = evt => {   
-        evt.preventDefault()
-        console.log(keyword)
-    }
-    const handleChange = evt => {
-        setKeyword(evt.target.value)
-    }
-    useEffect(()=>{
+    // const [keyword, setKeyword] = useState("");
+    // const handleSubmit = evt => {   
+    //     evt.preventDefault()
+    //     console.log(keyword)
+    // }
+    // const handleChange = evt => {
+    //     setKeyword(evt.target.value)
+    // }
+    // useEffect(()=>{
 
-    })
+    // })
     return(
         <div className="header-container">
             

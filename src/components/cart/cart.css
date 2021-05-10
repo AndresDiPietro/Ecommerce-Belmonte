@@ -5,8 +5,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100px 50px;
-    /* background-color: rgb(214, 182, 243); */
-
 }
 .cart__clear{
     grid-column: 1/2;
@@ -24,15 +22,16 @@
     font-size: 1.2em;
     margin:auto;
     margin-left: auto;
-    /* background-color: cadetblue; */
 }
 .cart__finish{
     grid-column: 2/3;
     grid-row: 2/3;
+    text-decoration: none;
     cursor: pointer;
     margin:auto;
     padding: 8px;
     border: none;
+    border-radius: 3px ;
     color: white;
     background-color: #2968C8;
     transition: background-color .2s;
@@ -47,7 +46,10 @@
     align-items: center;
     font-size: 1.1em;
 }
-.cart__empty-button{
+.cart__empty-link{
+    margin-left: .5em;
+    font-weight: 500;
+    text-decoration: none;
     cursor: pointer;
     border: none;
     color: #2968C8;
