@@ -23,17 +23,13 @@
     max-width: 100% ;
     max-height: 100%;
     margin: auto;
-    /* border: 1px solid blueviolet; */
     grid-row: 1/2;
-    /* grid-column: 1 / -1; */
 }
 .price{
     grid-row: 2/3;
-    /* background-color: blueviolet; */
     display: flex;
     flex-wrap: wrap;
     border-top: 1px solid rgba(0, 0, 0, 0.109);
-    /* padding-top: .5em; */
     padding-bottom: .5em;
     position: relative;
 
@@ -53,21 +49,15 @@
     background-color: rgba(0, 0, 0, 0.486);
 }
 .item__price{
-    /* grid-column: 1 / 2; */
     padding-top: .5em;
     padding-left: .3em;
     font-size: 1.4em;
-    /* background-color: rgb(205, 50, 205); */
 }
 .item__sale{
-    /* border-top: 1px solid rgba(0, 0, 0, 0.109); */
-    /* grid-column: 2 / 3; */
     padding-top: 1em;
     color: #2EB670 ;
-    /* background-color: rgb(33, 71, 60); */
 }
 .item__title{
-    /* grid-column: 1 / -1; */
     grid-row: 3/4;
     margin: 0;
     padding-top: .5em;
@@ -75,7 +65,6 @@
     padding-bottom: 1em;
     font-size: .9em;
     font-weight: 300;
-    /* background-color: yellowgreen; */
 }
 .item__nostock{
     background-color: rgba(0, 0, 0, 0.767);
@@ -83,7 +72,6 @@
     position: absolute;
     width: 100%;
     top: -.5em;
-    /* left: 25%; */
     text-align: center;
     padding: .1em 0;
 }

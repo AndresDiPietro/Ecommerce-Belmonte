@@ -2,6 +2,15 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import {getFirestore} from '../firebase'
 
+export const getItems = (id) => {//Funcion para llamar item en ItemDetail
+    const db = getFirestore()
+    const itemsCollection = db.collection('items')
+
+    const item = itemsCollection.doc(id)
+    return  item.get()
+}
+
+
 export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice, spinner) => {//Funcion para generar orden de compra
     spinner(true)
     const db = getFirestore()

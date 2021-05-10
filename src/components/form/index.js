@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react'
 import {CartContext} from '../../context/CartContext'
 import { Link } from "react-router-dom"
-import { newName, newSurName, newPhone, newEmail, newSubmit} from '../../regEx'
+import { newName, newSurName, newPhone, newEmail, newEmailConfirm, newSubmit} from '../../regEx'
 import {newOrder} from '../../firebase/firestore'
 import Loading from '../loading'
 import './form.css'
 
 const FormCart = () => {
-    const [formIsValid, setFormIsValid] = useState({name: false, surName:false, phone: false, email: false})
+    const [formIsValid, setFormIsValid] = useState({name: false, surName:false, phone: false, email: false, emailConfirm: false})
     const [order, setOrder] = useState(null)
     const {cart, setCart, calculatePrice} = useContext(CartContext)
+    const [err, setErr] = useState(false)
     const [spinner, setSpinner] = useState(false)
     
     const newBuy = ()=>{
@@ -31,7 +32,7 @@ const FormCart = () => {
         <div>  
             {spinner? <Loading/>
                 :
-            <form className='cart-form' onSubmit={(e)=>newSubmit(e, formIsValid, newBuy)}>
+            <form className='cart-form' onSubmit={(e)=>newSubmit(e, formIsValid, newBuy, setErr)}>
                 <div className='cart-form__container'>
                     <label className='cart-form__label' htmlFor='name'>Nombre
                         <input className='cart-form__input' id='name' type='text' placeholder='Sam' minLength='3' maxLength='16' required onChange={(e)=>newName(e,setFormIsValid, formIsValid)}/>
@@ -46,8 +47,12 @@ const FormCart = () => {
                         <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmail(e,setFormIsValid, formIsValid)}/>
                     </label>
                     <label className='cart-form__label' htmlFor='email'>Confirmar Email
-                        <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmail(e,setFormIsValid, formIsValid)}/>
+                        <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmailConfirm(e,setFormIsValid, formIsValid)}/>
                     </label>
+                    {err?<div className='cart-form__err'>Confirmación de Emil incorrecta</div>
+                        :
+                    null
+                    }   
                     <input className='cart-form__submit'  type='submit' />
                 </div>
             </form>

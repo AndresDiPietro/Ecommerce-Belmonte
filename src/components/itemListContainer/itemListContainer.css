@@ -1,7 +1,6 @@
 .itemListContainer{
     margin: 0 auto;
     max-width: 1200px;
-    /* background-color: blueviolet; */
 }
 .itemListContainer__title{
     text-align: center;
@@ -9,16 +8,15 @@
     font-size: 1.6em;
     text-transform: uppercase;
 }
-.item-list{
-    /*======== ======= HOME LIST ITEMS ======= =========*/
+.item-list{/* HOME LIST ITEMS */
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 1em;
-    /* background-color: rgba(179, 255, 0, 0.171); */
 }
-.categoryItemsList{
-    /*======== ======= CATEGORY LIST ITEMS ======= =========*/
+.categoryItemsList{/* CATEGORY LIST ITEMS */
+    
     display: flex;
     flex-direction: column;
 }

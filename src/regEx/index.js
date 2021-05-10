@@ -52,10 +52,23 @@ const validateEmail = (email) => {
             setState(newObj)
         }
     }
+    export const newEmailConfirm = (e, setState, state) => {
+        if(validateEmail(e.target.value.trim()) && e.target.value.trim() === state.email ){
+            const newObj = {...state, emailConfirm :e.target.value.trim()}
+            setState(newObj)
+        }else {
+            const newObj = {...state, emailConfirm :false}
+            setState(newObj)
+        }
+    }
 
 //----------------------------------------------------------------------------
 
-export const newSubmit = (e, state, fnCart) => {
+export const newSubmit = (e, state, fnCart, setErr) => {
     e.preventDefault()
-    if(state.name !== false && state.surName !== false && state.phone !== false && state.email !== false) fnCart()
+    if(state.name !== false && state.surName !== false && state.phone !== false && state.email !== false && state.emailConfirm !== false){
+        setErr(false)
+        fnCart()
+    } 
+    else setErr(true)
 }
