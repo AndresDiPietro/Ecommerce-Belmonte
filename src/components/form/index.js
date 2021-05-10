@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import {CartContext} from '../../context/CartContext'
 import { Link } from "react-router-dom"
-import { newName, newSurName, newPhone, newEmail, newSubmit, valid} from '../../regEx'
+import { newName, newSurName, newPhone, newEmail, newSubmit} from '../../regEx'
 import {newOrder} from '../../firebase/firestore'
 import './form.css'
 
@@ -13,7 +13,7 @@ const FormCart = () => {
     const newBuy = ()=>{
         newOrder(formIsValid, setIdBuy, cart, setCart, calculatePrice)
     }
-    
+
     if (idBuy) return(
         <div className='voucher'>
             <h1 className='voucher__title'>Su compra ha sido exitosa!</h1>
@@ -37,7 +37,7 @@ const FormCart = () => {
                     <label className='cart-form__label' htmlFor='email'>Email
                         <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmail(e,setFormIsValid, formIsValid)}/>
                     </label>
-                    <input className='cart-form__submit' disabled={valid(formIsValid)} type='submit' />
+                    <input className='cart-form__submit'  type='submit' />
                 </div>
             </form>
         </div>

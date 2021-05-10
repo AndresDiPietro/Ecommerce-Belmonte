@@ -6,7 +6,7 @@ const validateUserName = (username) => {
     if(userNameRegex.test(username)) return true 
 }
 const validatePhone = (phone) => {
-    const userPhoneRegex = /[0-9]{3,16}/
+    const userPhoneRegex = /[0-9]{7,16}/
     if(userPhoneRegex.test(phone)) return true 
 }
 const validateEmail = (email) => {
@@ -58,12 +58,4 @@ const validateEmail = (email) => {
 export const newSubmit = (e, state, fnCart) => {
     e.preventDefault()
     if(state.name !== false && state.surName !== false && state.phone !== false && state.email !== false) fnCart()
-}
-export const valid = (state)=>{
-    if(state.name !== false && state.surName !== false && state.phone !== false && state.email !== false) {
-        return false
-    }
-    else{
-        return true
-    } 
 }

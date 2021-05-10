@@ -4,7 +4,6 @@
 .cart-form{
     margin: auto;
     padding: 1em;
-    /* background-color: white; */
 }
 .cart-form__container{
     display: flex;
@@ -12,20 +11,24 @@
     align-items: center;
     width: 80%;
     margin: .5em auto;
-    /* background-color: rgb(216, 174, 5); */
 }
 .cart-form__label{
     display: flex;
     align-items: center;
     width: 100%;
     margin-bottom: .5em;
-    /* background-color: brown; */
 }
 .cart-form__input{
     width: 70%;
     padding: .3em;
     margin-left: auto;
-    /* background-color: cadetblue; */
+}
+.cart-form__input:invalid{
+    border: 1px solid orange ;
+}
+.cart-form__input:valid{
+    border: 1px solid green ;
+
 }
 .cart-form__submit{
     cursor: pointer;
