@@ -140,3 +140,6 @@ Todas las funciones y expresiones regulares se encuentran en el archivo [src/reg
 
 ### Estilos
 Todos los estilos fueron realizados con **CSS** y se encuentran en la carpeta correspondiente a cada archivo **.js**.  
+
+### Captura de uso formato Gif
+La captura de pantalla mostrando el uso de la app, se encuentra en la carpeta **public**.
