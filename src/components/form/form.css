@@ -22,11 +22,17 @@
     width: 70%;
     padding: .3em;
     margin-left: auto;
+    outline: none;
+}
+.cart-form__input:focus{
+    border: 1px solid grey;
 }
 .cart-form__input:invalid{
+    background-color: rgba(255, 166, 0, 0.111);
     border: 1px solid orange ;
 }
 .cart-form__input:valid{
+    background-color: lightgreen;
     border: 1px solid green ;
 
 }
@@ -38,16 +44,46 @@
     border: none;
     background-color: blue;
 }
+/*---------------------------------*/
 .voucher{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    width: 80%;
+    margin: 2em auto;
     padding: 0 1.5em 1em 1.5em;
-    background-color: rgba(22, 228, 56, 0.727);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.727);
 }
 .voucher__title{
     font-weight: 500;
+}
+.voucher__list{
+    list-style: none;
+    padding-left: 0;
+}
+.voucher__list-item{
+    display: flex;
+    padding: 0 .5em .2em .5em;
+    border-bottom: 1px solid grey;
+}
+.voucher__list-price{
+    margin-left: auto ;
+    font-size:1.2em;
+
+}
+.voucher__total{
+    margin-left: auto;
+    padding-right: .5em;
+}
+.voucher__total-price{
+    padding-left: .2em;
+    font-size:1.5em;
+    font-weight: 500;
+}
+.voucher__p{
+    padding-left: .5em;
+
 }
 .voucher__id{
     font-weight: 500;

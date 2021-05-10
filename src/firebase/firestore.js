@@ -2,8 +2,8 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import {getFirestore} from '../firebase'
 
-export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice) => {//Funcion para generar orden de compra
-
+export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice, spinner) => {//Funcion para generar orden de compra
+    spinner(true)
     const db = getFirestore()
     const orderColl = db.collection('orders')
 
@@ -19,11 +19,14 @@ export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice) => 
     orderColl.add(order)
     
     .then(({id})=>{
-        comprobante({id})
+        const newVoucher = {...order, newId:{id} }
+        comprobante(newVoucher)
+        spinner(false)
         console.log(`Compra exitosa ID: ${id}`)
     })
     .catch(err=>{
         window.alert('Ha ocurido un error, por favor intente nuevamente')
+        spinner(false)
         console.log(err)
     })
 
@@ -45,8 +48,8 @@ export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice) => 
         batch.commit()
         .then(() => {
             console.log('Lote de items modificado')
+            setCarrito([])
         })
-        setCarrito([])
     })
 }
 
