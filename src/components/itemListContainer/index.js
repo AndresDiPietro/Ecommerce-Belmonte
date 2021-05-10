@@ -3,30 +3,13 @@ import ItemList from "../itemList"
 import {useParams} from "react-router-dom"
 import "./itemListContainer.css"
 import Loading from '../loading'
-import {getFirestore} from '../../firebase'
+import {callProducts} from '../../firebase/firestore'
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([])
     const {categoryId} = useParams()
     const [loader, setLoader] = useState(false)
 
-    const callProducts = () => {
-        setLoader(true)
-        const db = getFirestore()
-        const itemsCollection = db.collection('items')
-        const filter = categoryId? itemsCollection.where('category', '==', categoryId) : null
-        const prom = categoryId? filter.get() : itemsCollection.get()
-
-        prom.then((res)=>{
-            if(res.size>0){
-                setItems(res.docs.map(doc =>{
-                    return {id: doc.id, ...doc.data()}
-                }))
-            }
-            setLoader(false)
-        })
-    }
-    
     let title
     items.map(item=> item.category === categoryId? title = categoryId : title = "Aprovechá el Hot Sale!")
     
@@ -35,7 +18,7 @@ const ItemListContainer = () => {
     else classItemList = "categoryItemsList"
     
     useEffect(()=>{
-        callProducts()
+        callProducts(setLoader, categoryId, setItems)
     },[categoryId])
     
     return(    

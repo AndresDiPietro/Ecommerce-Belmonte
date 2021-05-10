@@ -2,10 +2,10 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import {getFirestore} from '../firebase'
 
-export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice) => {
+export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice) => {//Funcion para generar orden de compra
 
-    const db = getFirestore()//Conect base de datos
-    const orderColl = db.collection('orders')//Creando collection 'orders'
+    const db = getFirestore()
+    const orderColl = db.collection('orders')
 
 //---------------------------------------//Creando orden con comprador y productos
     let order = {}
@@ -46,6 +46,25 @@ export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice) => 
         .then(() => {
             console.log('Lote de items modificado')
         })
-        setCarrito([])//Vaciando carrito
+        setCarrito([])
+    })
+}
+
+//------------------------------------------------------------------------------
+
+export const callProducts = (spinner, category, items) => {//Funcion para itemListContainer
+    spinner(true)
+    const db = getFirestore()
+    const itemsCollection = db.collection('items')
+    const filter = category? itemsCollection.where('category', '==', category) : null
+    const prom = category? filter.get() : itemsCollection.get()
+
+    prom.then((res)=>{
+        if(res.size>0){
+            items(res.docs.map(doc =>{
+                return {id: doc.id, ...doc.data()}
+            }))
+        }
+        spinner(false)
     })
 }
