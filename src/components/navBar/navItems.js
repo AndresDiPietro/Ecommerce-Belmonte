@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const NavItem = (props) => {
     return(
-        <li className={props.classItem}><Link to={props.link} className={props.classLink}><i className={props.classIcon}></i>{props.content}</Link></li>
+        <li className={props.classItem}><NavLink to={props.link} activeClassName='nav-item__active' className={props.classLink}><i className={props.classIcon}></i>{props.content}</NavLink></li>
     )
 };
 

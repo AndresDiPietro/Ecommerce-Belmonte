@@ -41,25 +41,20 @@
 .nav--active{
     transform: translateX(0);
 }
+.nav-item__active{
+    font-weight: 500;
+}
 @media screen and (min-width: 1024px){
     .header__title{
         font-size: 2em;
         padding-top: 0;
-    }
-    .header__search{
-        margin: auto;
-        width: 28%;
-    }
-    .header__search-input{
-        padding: .5em;
-        border-radius: 0;
-        width: 100%;
     }
     .nav{
         position: relative;
         transform: translateX(0);
         top: 0;
         width: min-content;
+        margin-left: auto;
         background-color: transparent;
     }
     .navbar{
@@ -71,6 +66,7 @@
         padding-right: 1em;
     }
     .navbar__link{
+        margin-left: 2em;
         display: flex;
         align-items: center;
     }

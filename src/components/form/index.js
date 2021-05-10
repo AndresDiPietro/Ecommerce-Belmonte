@@ -32,30 +32,34 @@ const FormCart = () => {
         <div>  
             {spinner? <Loading/>
                 :
-            <form className='cart-form' onSubmit={(e)=>newSubmit(e, formIsValid, newBuy, setErr)}>
-                <div className='cart-form__container'>
-                    <label className='cart-form__label' htmlFor='name'>Nombre
-                        <input className='cart-form__input' id='name' type='text' placeholder='Sam' minLength='3' maxLength='16' required onChange={(e)=>newName(e,setFormIsValid, formIsValid)}/>
-                    </label>
-                    <label className='cart-form__label' htmlFor='surname'>Apellido
-                        <input className='cart-form__input' id='surname' type='text' placeholder='Peterson' minLength='3' maxLength='16' required onChange={(e)=>newSurName(e,setFormIsValid, formIsValid)}/>
-                    </label>
-                    <label className='cart-form__label' htmlFor='phone'>Teléfono
-                        <input className='cart-form__input' id='phone' type='tel' placeholder='1534254' minLength='7' required onChange={(e)=>newPhone(e,setFormIsValid, formIsValid)}/>
-                    </label>
-                    <label className='cart-form__label' htmlFor='email'>Email
-                        <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmail(e,setFormIsValid, formIsValid)}/>
-                    </label>
-                    <label className='cart-form__label' htmlFor='email'>Confirmar Email
-                        <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmailConfirm(e,setFormIsValid, formIsValid)}/>
-                    </label>
-                    {err?<div className='cart-form__err'>Confirmación de Emil incorrecta</div>
-                        :
-                    null
-                    }   
-                    <input className='cart-form__submit'  type='submit' />
-                </div>
-            </form>
+            <div>
+                <h1 className='form-confirm'>Confirmar compra</h1>
+                <p className='form-confirm__total' >Precio total: <span className='form-confirm__price'>${calculatePrice()}</span></p>
+                <form className='cart-form' onSubmit={(e)=>newSubmit(e, formIsValid, newBuy, setErr)}>
+                    <div className='cart-form__container'>
+                        <label className='cart-form__label' htmlFor='name'>Nombre
+                            <input className='cart-form__input' id='name' type='text' placeholder='Sam' minLength='3' maxLength='16' required onChange={(e)=>newName(e,setFormIsValid, formIsValid)}/>
+                        </label>
+                        <label className='cart-form__label' htmlFor='surname'>Apellido
+                            <input className='cart-form__input' id='surname' type='text' placeholder='Peterson' minLength='3' maxLength='16' required onChange={(e)=>newSurName(e,setFormIsValid, formIsValid)}/>
+                        </label>
+                        <label className='cart-form__label' htmlFor='phone'>Teléfono
+                            <input className='cart-form__input' id='phone' type='tel' placeholder='1534254' minLength='7' required onChange={(e)=>newPhone(e,setFormIsValid, formIsValid)}/>
+                        </label>
+                        <label className='cart-form__label' htmlFor='email'>Email
+                            <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmail(e,setFormIsValid, formIsValid)}/>
+                        </label>
+                        <label className='cart-form__label' htmlFor='email'>Confirmar Email
+                            <input className='cart-form__input' id='email' type='email' placeholder='sampeterson@gmail.com' required onChange={(e)=>newEmailConfirm(e,setFormIsValid, formIsValid)}/>
+                        </label>
+                        {err?<div className='cart-form__err'>Confirmación de Emil incorrecta</div>
+                            :
+                        null
+                        }   
+                        <input className='cart-form__submit'  type='submit' />
+                    </div>
+                </form>
+            </div>
             }
         </div>
     )
