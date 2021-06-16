@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import { Link } from "react-router-dom"
 import {CartContext} from '../../context/CartContext'
 import CartItem from "../cartItem"
@@ -7,6 +7,11 @@ import './cart.css'
 const Cart = () => {
 
     const {cart, removeItem, clear, calculatePrice} = useContext(CartContext)
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    useEffect(()=>{
+        setTotalPrice(calculatePrice())
+    },[cart])
     
     return(
         <section className="cart">
@@ -19,7 +24,7 @@ const Cart = () => {
                     Vaciar carrito 
                 </button>
                 <span className='cart__total-price'>
-                    Precio total: {calculatePrice()}
+                    Precio total: {totalPrice}
                 </span>
                 <Link to='/form' className="cart__finish">
                         Continuar compra

@@ -12,12 +12,14 @@ const ItemDetailContainer = () => {
 
     useEffect(()=>{
         setLoader(true)
-        getItems(itemId)
-        .then(res=>{
-            if(res.exists){
-                setItem({id:res.id, ...res.data()})
-            }
-        })
+        if(itemId!==undefined){
+            getItems(itemId)
+            .then(res=>{
+                if(res.exists){
+                    setItem({id:res.id, ...res.data()})
+                }
+            })
+        }
         setLoader(false)
     },[itemId])
 

@@ -11,6 +11,10 @@ const NavBar = () => {
     
     const classIcon = active ? "navbar__icon-bars" : "navbar__icon-bars navbar__icon-bars--active";
     const classNav = active ? "nav" : "nav nav--active";
+
+    const categories = [
+        {category:'otoño-invierno', link:'/category/otoño-invierno', classIcon:'far fa-snowflake navbar__icon', content:'Otoño/Invierno'},{category:'primavera-verano', link:'/category/primavera-verano', classIcon:'fas fa-umbrella-beach navbar__icon', content:'Primavera/Verano'}
+    ]
     
     return(
         <div className="header-container">
@@ -21,11 +25,9 @@ const NavBar = () => {
             
             <nav className={classNav}>
                 <ul className="navbar">
-                    <NavItem classItem="navbar__item" link="/category/otoño-invierno" classLink="navbar__link" classIcon="far fa-snowflake navbar__icon" content="Otoño/Invierno"/>
-                    <NavItem classItem="navbar__item" link="/category/primavera-verano" classLink="navbar__link" classIcon="fas fa-umbrella-beach navbar__icon" content="Primavera/Verano"/>
+                    {categories.map(e=> <NavItem key={e.category} link={`/category/${e.category}`} classIcon={e.classIcon} content={e.content} />)}
                 </ul>
             </nav>
-
             <CartWidget/>
         </div>
     )
