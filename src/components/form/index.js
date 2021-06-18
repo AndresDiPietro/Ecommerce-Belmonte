@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import {CartContext} from '../../context/CartContext'
+import {CartContext} from '../../context/cartContext'
 import { Link } from "react-router-dom"
 import { newName, newSurName, newPhone, newEmail, newEmailConfirm, newSubmit} from '../../regEx'
 import {newOrder} from '../../firebase/firestore'

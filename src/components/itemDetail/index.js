@@ -3,7 +3,7 @@ import "./itemdetail.css"
 import ItemCount from "../itemCount"
 import Loading from '../loading'
 import { Link } from "react-router-dom"
-import {CartContext} from '../../context/CartContext'
+import {CartContext} from '../../context/cartContext'
 
 const ItemDetail = ({item}) => {
     const {addItem} = useContext(CartContext)

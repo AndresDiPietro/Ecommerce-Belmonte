@@ -64,19 +64,10 @@ export const newOrder = (buyer, comprobante, carrito, setCarrito, calcPrice, spi
 
 //------------------------------------------------------------------------------
 
-export const callProducts = (spinner, category, items) => {//Funcion para itemListContainer
-    spinner(true)
+export const callProducts = (category) => {//Funcion para itemListContainer
     const db = getFirestore()
     const itemsCollection = db.collection('items')
     const filter = category? itemsCollection.where('category', '==', category) : null
     const prom = category? filter.get() : itemsCollection.get()
-
-    prom.then((res)=>{
-        if(res.size>0){
-            items(res.docs.map(doc =>{
-                return {id: doc.id, ...doc.data()}
-            }))
-        }
-        spinner(false)
-    })
+    return prom
 }

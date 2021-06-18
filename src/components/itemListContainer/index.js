@@ -18,7 +18,16 @@ const ItemListContainer = () => {
     else classItemList = "categoryItemsList"
     
     useEffect(()=>{
-        callProducts(setLoader, categoryId, setItems)
+        setLoader(true)
+        callProducts(categoryId)
+        .then((res)=>{
+            if(res.size>0){
+                setItems(res.docs.map(doc =>{
+                    return {id: doc.id, ...doc.data()}
+                }))
+            }
+        setLoader(false)
+    })
     },[categoryId])
     
     return(    
